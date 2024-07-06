@@ -137,13 +137,13 @@ class Maze:
                 return True
             self._cells[i][j].draw_move(self._cells[i+1][j], True)
         # up
-        if j > 0 and not self._cells[i][j-1].visited:
+        if j > 0 and not self._cells[i][j-1].visited and not self._cells[i][j].has_top_wall:
             self._cells[i][j].draw_move(self._cells[i][j-1])
             if self._solve_r(i, j-1):
                 return True
             self._cells[i][j].draw_move(self._cells[i][j-1], True)
         # left
-        if i > 0 and not self._cells[i-1][j].visited:
+        if i > 0 and not self._cells[i-1][j].visited and not self._cells[i][j].has_left_wall:
             self._cells[i][j].draw_move(self._cells[i-1][j])
             if self._solve_r(i-1, j):
                 return True
